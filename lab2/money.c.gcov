@@ -1,0 +1,40 @@
+        -:    0:Source:money.c
+        -:    0:Graph:money.gcno
+        -:    0:Data:money.gcda
+        -:    0:Runs:4
+        -:    1:#include <stdlib.h>
+        -:    2:#include "money.h"
+        -:    3:
+        -:    4:struct Money {
+        -:    5:	double amount;
+        -:    6:	char *currency;
+        -:    7:};
+        -:    8:
+        3:    9:void money_free(Money *m) {
+        3:   10:	free(m);
+        3:   11:	return;
+        -:   12:}
+        -:   13:
+        3:   14:Money *money_create(double amount, char *currency) {
+        -:   15:	Money *m;
+        -:   16:
+        3:   17:	if (amount < 0)
+        1:   18:		return NULL;
+        -:   19:
+        2:   20:	m = malloc(sizeof(Money));
+        2:   21:	if (m == NULL)
+    #####:   22:		return NULL;
+        -:   23:
+        2:   24:	m->amount = amount;
+        2:   25:	m->currency = currency;
+        -:   26:
+        2:   27:	return m;
+        -:   28:}
+        -:   29:
+        1:   30:double money_amount(Money *m) {
+        1:   31:	return m->amount;
+        -:   32:}
+        -:   33:
+        1:   34:char *money_currency(Money *m) {
+        1:   35:	return m->currency;
+        -:   36:}
